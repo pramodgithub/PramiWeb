@@ -7,11 +7,17 @@ import beans.Product;
 public interface ProductInterface {
 
     final int limit = 10;
-    
+
     public Product getProductbyId(int prodId);
 
     public List<Product> getProducts(int limit, int start);
 
     public List<Product> getProductsByFilter(String[] filters);
-    
+
+    public Product addProduct(Product product);
+
+    public Product deleteproduct(Product product);
+
+    public Product updateProduct(Product product);
+
 }

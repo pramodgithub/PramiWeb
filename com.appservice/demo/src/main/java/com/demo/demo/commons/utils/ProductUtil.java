@@ -9,7 +9,7 @@ import com.demo.demo.interfaces.ProductInterface;
 import beans.Product;
 
 @Repository
-public class ProductUtil implements ProductInterface{
+public class ProductUtil implements ProductInterface {
 
     @Override
     public Product getProductbyId(int prodId) {
@@ -28,5 +28,23 @@ public class ProductUtil implements ProductInterface{
         // TODO Auto-generated method stub
         return null;
     }
-    
+
+    @Override
+    public Product addProduct(Product product) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Product deleteproduct(Product product) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Product updateProduct(Product product) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

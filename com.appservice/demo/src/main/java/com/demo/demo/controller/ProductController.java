@@ -3,8 +3,12 @@ package com.demo.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +17,7 @@ import com.demo.demo.commons.utils.ProductUtil;
 
 import beans.Product;
 
+@RequestMapping("/v1/product")
 @RestController
 public class ProductController {
 
@@ -36,5 +41,17 @@ public class ProductController {
         product = productUtil.getProductbyId(productId);
         return product;
 
+    }
+
+    @RequestMapping(value = "/addProduct", //
+            method = RequestMethod.POST, //
+            produces = { MediaType.APPLICATION_JSON_VALUE, //
+                    MediaType.APPLICATION_XML_VALUE })
+    @ResponseBody
+    public Product addProduct(@RequestBody Product product) {
+
+        System.out.println("(Service Side) Creating Product: ");
+
+        return productUtil.addProduct(product);
     }
 }
