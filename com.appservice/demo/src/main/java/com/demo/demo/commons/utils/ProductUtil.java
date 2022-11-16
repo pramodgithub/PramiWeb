@@ -2,10 +2,13 @@ package com.demo.demo.commons.utils;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.demo.demo.interfaces.ProductInterface;
 
 import beans.Product;
 
+@Repository
 public class ProductUtil implements ProductInterface{
 
     @Override
