@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,5 +54,16 @@ public class ProductController {
         System.out.println("(Service Side) Creating Product: ");
 
         return productUtil.addProduct(product);
+    }
+
+    @RequestMapping(value = "/deleteProduct/{productId}", //
+            method = RequestMethod.DELETE, //
+            produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    @ResponseBody
+    public Product deleteProduct(@PathVariable("productId") int productId) {
+
+        System.out.println("(Service Side) Deleting Product: ");
+
+        return productUtil.deleteProduct(productId);
     }
 }

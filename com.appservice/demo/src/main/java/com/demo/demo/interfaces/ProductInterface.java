@@ -16,7 +16,7 @@ public interface ProductInterface {
 
     public Product addProduct(Product product);
 
-    public Product deleteproduct(Product product);
+    public Product deleteProduct(int productId);
 
     public Product updateProduct(Product product);
 
