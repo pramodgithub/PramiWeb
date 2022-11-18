@@ -1,15 +1,31 @@
-import PropTypes from 'prop-types';
-// @mui
-import { Grid } from '@mui/material';
-import ShopProductCard from './ProductCard';
+import { useEffect } from 'react';
 
-// ----------------------------------------------------------------------
+import { useDispatch, useSelector } from 'react-redux';
+import { Grid } from '@mui/material';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+
+import { setProducts } from '../../../redux/actions/productActions';
+import ShopProductCard from './ProductCard';
 
 ProductList.propTypes = {
   products: PropTypes.array.isRequired,
 };
 
 export default function ProductList({ products, ...other }) {
+  const productstore = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const fetchProducts = async () => {
+    const response = await axios.get('http://127.0.0.1:3001/products').catch((error) => console.error(error));
+    console.log(response.data);
+    dispatch(setProducts(response.data));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  console.log(productstore);
   return (
     <Grid container spacing={3} {...other}>
       {products.map((product) => (
