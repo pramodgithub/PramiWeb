@@ -3,7 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+app.log
 ### STS ###
 .apt_generated
 .classpath
@@ -18,7 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
-
+*.log
+*.gz
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

@@ -1,4 +1,4 @@
-package com.demo.demo;
+package com.java.crud.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
