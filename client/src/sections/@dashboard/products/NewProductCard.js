@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 // @mui
 import { Box, Card, Link, Typography, Stack, Button } from '@mui/material';
@@ -8,6 +9,7 @@ import { styled } from '@mui/material/styles';
 
 // utils
 import { fCurrency } from '../../../utils/formatNumber';
+import { addToCart } from '../../../redux/actions/productActions';
 // components
 import Label from '../../../components/label';
 import { ColorPreview } from '../../../components/color-utils';
@@ -30,7 +32,10 @@ NewProductCard.propTypes = {
 
 export default function NewProductCard({ product }) {
   const { name, cover, price, colors, status, priceSale } = product;
-
+  const dispatch = useDispatch();
+  const addtoCart = () => {
+    dispatch(addToCart(product));
+  };
   return (
     <Card sx={{ display: 'flex' }}>
       <CardMedia component="img" sx={{ width: '50%' }} image={cover} alt="Live from space album cover" />
@@ -51,14 +56,14 @@ export default function NewProductCard({ product }) {
                   textDecoration: 'line-through',
                 }}
               >
-                {fCurrency(price)}
+                {fCurrency(priceSale)}
               </Typography>
               &nbsp;
-              {priceSale && fCurrency(priceSale)}
+              {price && fCurrency(price)}
             </Typography>
           </Stack>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" endIcon={<AddShoppingCartIcon />}>
+            <Button onClick={addtoCart} variant="contained" endIcon={<AddShoppingCartIcon />}>
               Add to Cart
             </Button>
           </Stack>

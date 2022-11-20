@@ -16,13 +16,12 @@ public class ProductController {
 
     @GetMapping("/check")
     public String check() {
-        return "Checking ok";
+        return "Check Ok";
     }
 
     @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product) {
 
-        System.out.println("Test body-->" + product.toString());
         return service.saveProduct(product);
     }
 

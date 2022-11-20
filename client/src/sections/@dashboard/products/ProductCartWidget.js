@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
@@ -30,6 +31,8 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function CartWidget() {
+  const cartProducts = useSelector((state) => state.cartProducts);
+
   return (
     <StyledRoot>
       <Badge showZero badgeContent={0} color="error" max={99}>

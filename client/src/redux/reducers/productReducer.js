@@ -8,8 +8,23 @@ export const productReducer = (state = initialState, { type, payload }) => {
     case ActionTypes.SET_PRODUCTS:
       return { ...state, products: payload };
 
-    case ActionTypes.SELECTED_PRODUCT:
+    default:
       return state;
+  }
+};
+
+export const selectedProductReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SELECTED_PRODUCT:
+      return { ...state, ...payload };
+    default:
+      return state;
+  }
+};
+export const shoppingCartReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.PRODUCT_ADDED:
+      return { ...state, cartProducts: payload };
     default:
       return state;
   }
