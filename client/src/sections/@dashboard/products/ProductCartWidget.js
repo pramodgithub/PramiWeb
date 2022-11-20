@@ -31,11 +31,11 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function CartWidget() {
-  const cartProducts = useSelector((state) => state.cartProducts);
-
+  const cart = useSelector((state) => state.cartProducts);
+  const cartCount = cart.cartProducts.length;
   return (
     <StyledRoot>
-      <Badge showZero badgeContent={0} color="error" max={99}>
+      <Badge showZero badgeContent={cartCount} color="error" max={99}>
         <Iconify icon="eva:shopping-cart-fill" width={24} height={24} />
       </Badge>
     </StyledRoot>

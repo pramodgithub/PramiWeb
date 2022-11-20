@@ -3,6 +3,10 @@ import { ActionTypes } from '../constants/action-types';
 const initialState = {
   products: [],
 };
+
+const cartInitialState = {
+  cartProducts: [],
+};
 export const productReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
@@ -13,7 +17,7 @@ export const productReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export const selectedProductReducer = (state = {}, { type, payload }) => {
+export const selectedProductReducer = (state = cartInitialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SELECTED_PRODUCT:
       return { ...state, ...payload };
@@ -21,10 +25,10 @@ export const selectedProductReducer = (state = {}, { type, payload }) => {
       return state;
   }
 };
-export const shoppingCartReducer = (state = initialState, { type, payload }) => {
+export const shoppingCartReducer = (state = cartInitialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.PRODUCT_ADDED:
-      return { ...state, cartProducts: payload };
+      return { ...state, cartProducts: [...state.cartProducts, payload] };
     default:
       return state;
   }
