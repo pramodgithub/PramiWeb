@@ -19,7 +19,7 @@ export default function ProductList({ ...other }) {
 
   const fetchProducts = async () => {
     const response = await axios.get('http://127.0.0.1:3001/products').catch((error) => console.error(error));
-
+    
     dispatch(setProducts(response.data));
   };
 
